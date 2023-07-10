@@ -1,0 +1,14 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite verbose="1" name="Kiryl first test" parallel="methods">
+
+	<parameter name="suiteOwner" value="kiryl"/>
+
+	<test name="SauceDemo Login Test">
+		<parameter name="login" value="standard_user"/>
+		<parameter name="password" value="secret_sauce"/>
+		<classes>
+			<class name="com.zebrunner.carina.demo.KirylSampleTest" />
+		</classes>
+	</test>
+
+</suite>
