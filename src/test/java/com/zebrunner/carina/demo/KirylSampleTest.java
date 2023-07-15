@@ -17,6 +17,8 @@ package com.zebrunner.carina.demo;
 
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.GSMArenaHomePage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.LoginComponent;
 import com.zebrunner.carina.demo.gui.pages.desktop.SauceDemoLoginPage;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
@@ -32,12 +34,14 @@ public class KirylSampleTest implements IAbstractTest {
     @MethodOwner(owner = "kiryl")
     @Parameters({"login", "password"})
     public void testLogin(String login, String password) {
-        SauceDemoLoginPage sauceDemoLoginPage = new SauceDemoLoginPage(getDriver());
-        sauceDemoLoginPage.openSauceDemoLoginPage();
-        Assert.assertTrue(sauceDemoLoginPage.isPageOpened(), "SauceDemoLogin page has not been opened.");
-        sauceDemoLoginPage.enterLogin(login);
-        sauceDemoLoginPage.enterPassword(password);
-        sauceDemoLoginPage.submitCredentials();
-        Assert.assertTrue(getDriver().getPageSource().contains("Products"),"Login unsuccessful!");
+        GSMArenaHomePage gsmArenaHomePage = new GSMArenaHomePage(getDriver());
+        gsmArenaHomePage.open();
+        LoginComponent loginComponent = gsmArenaHomePage.getLoginComponent();
+        loginComponent.enterLogin(login)
+                .enterPassword(password);
+        gsmArenaHomePage = loginComponent.submitCredentials();
+        Assert.assertTrue(gsmArenaHomePage.isPageOpened(), "Home Page is not opened!");
+        Assert.assertTrue(gsmArenaHomePage.isLogOutButtonDisplayed(), "Log out button is not displayed!");
+        pause(10);
     }
 }

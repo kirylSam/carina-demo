@@ -3,9 +3,9 @@
 
 	<parameter name="suiteOwner" value="kiryl"/>
 
-	<test name="SauceDemo Login Test">
-		<parameter name="login" value="standard_user"/>
-		<parameter name="password" value="secret_sauce"/>
+	<test name="GSMArena Login Test">
+		<parameter name="login" value="huawei186i+solvd@gmail.com"/>
+		<parameter name="password" value="password"/>
 		<classes>
 			<class name="com.zebrunner.carina.demo.KirylSampleTest" />
 		</classes>
