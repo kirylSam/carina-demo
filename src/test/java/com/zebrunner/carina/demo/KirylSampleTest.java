@@ -21,12 +21,18 @@ import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.GSMArenaHomePage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.LoginComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.HeaderComponent;
 import com.zebrunner.carina.demo.gui.pages.desktop.SauceDemoLoginPage;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
+
+import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
+import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
 /**
  * Sample web test
@@ -34,7 +40,7 @@ import java.util.List;
  * @author kiryl
  */
 public class KirylSampleTest implements IAbstractTest {
- /*   @Test
+    @Test
     @MethodOwner(owner = "kiryl")
     @Parameters({"login", "password"})
     public void testLogin(String login, String password) {
@@ -46,7 +52,7 @@ public class KirylSampleTest implements IAbstractTest {
         gsmArenaHomePage = loginComponent.submitCredentials();
         Assert.assertTrue(gsmArenaHomePage.isPageOpened(), "Home Page is not opened!");
         Assert.assertTrue(gsmArenaHomePage.isLogOutButtonDisplayed(), "Log out button is not displayed!");
-    }*/
+    }
 
 
     @Test
@@ -63,50 +69,76 @@ public class KirylSampleTest implements IAbstractTest {
         headerComponent.clickSearchField();
         Assert.assertTrue(headerComponent.isAdvancedSearchIconDisplayed(), "Advanced search icon is not displayed!");
 
+        headerComponent.clickGSMArenaLogo();
+
         headerComponent.clickTipUsIcon();
         Assert.assertTrue(getDriver().getTitle().equals("Tip us - GSMArena.com"), "Tip us page is not opened!");
 
+        Assert.assertTrue(getDriver().getWindowHandles().size() == 1, "Another tab is opened!");
+        String originalWindow = getDriver().getWindowHandle();
         headerComponent.clickYoutubeIcon();
-        List<String> browserTabs = new ArrayList<>(getDriver().getWindowHandles());
-        getDriver().switchTo().window(browserTabs.get(1));
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("youtube.com"), "New Youtube tab is not opened");
-        getDriver().close();
-        getDriver().switchTo().window(browserTabs.get(0));
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("https://www.gsmarena.com/"), "Youtube tab was not closed!");
 
-
-        /*headerComponent.clickInstaIcon();
-        browserTabs = new ArrayList<>(getDriver().getWindowHandles());
-        if(browserTabs.size() > 2) {
-            Assert.assertTrue(true, "A new tab was not opened!");
-        } else {
-            Assert.assertTrue(false, "A new tab was not opened");
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
+        wait.until(numberOfWindowsToBe(2));
+        for (String windowHandle : getDriver().getWindowHandles()) {
+            if(!originalWindow.contentEquals(windowHandle)) {
+                getDriver().switchTo().window(windowHandle);
+                break;
+            }
         }
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("youtube.com"));
+        getDriver().close();
+        getDriver().switchTo().window(originalWindow);
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("gsmarena.com"));
+
+
+        headerComponent.clickInstaIcon();
+        wait.until(numberOfWindowsToBe(2));
+        for (String windowHandle : getDriver().getWindowHandles()) {
+            if(!originalWindow.contentEquals(windowHandle)) {
+                getDriver().switchTo().window(windowHandle);
+                break;
+            }
+        }
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("instagram.com"));
+        getDriver().close();
+        getDriver().switchTo().window(originalWindow);
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("gsmarena.com"));
 
         headerComponent.clickRSSIcon();
         Assert.assertTrue(getDriver().getCurrentUrl().equals("https://www.gsmarena.com/rss-news-reviews.php3"));
         getDriver().navigate().back();
 
         headerComponent.clickCarIcon();
-        browserTabs = new ArrayList<>(getDriver().getWindowHandles());
-        if(browserTabs.size() > 3) {
-            Assert.assertTrue(true, "A new tab was not opened!");
-        } else {
-            Assert.assertTrue(false, "A new tab was not opened");
+        wait.until(numberOfWindowsToBe(2));
+        for (String windowHandle : getDriver().getWindowHandles()) {
+            if(!originalWindow.contentEquals(windowHandle)) {
+                getDriver().switchTo().window(windowHandle);
+                break;
+            }
         }
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("arenaev.com"));
+        getDriver().close();
+        getDriver().switchTo().window(originalWindow);
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("gsmarena.com"));
 
 
         headerComponent.clickCartIcon();
-        browserTabs = new ArrayList<>(getDriver().getWindowHandles());
-        if(browserTabs.size() > 4) {
-            Assert.assertTrue(true, "A new tab was not opened!");
-        } else {
-            Assert.assertTrue(false, "A new tab was not opened");
+        wait.until(numberOfWindowsToBe(2));
+        for (String windowHandle : getDriver().getWindowHandles()) {
+            if(!originalWindow.contentEquals(windowHandle)) {
+                getDriver().switchTo().window(windowHandle);
+                break;
+            }
         }
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("merch"));
+        getDriver().close();
+        getDriver().switchTo().window(originalWindow);
+        Assert.assertTrue(getDriver().getCurrentUrl().contains("gsmarena.com"));
 
+        wait.until(numberOfWindowsToBe(1));
         headerComponent.clickSignUpIcon();
-        Assert.assertTrue(getDriver().getTitle().equals("Create account - GSMArena.com"));*/
+        Assert.assertTrue(getDriver().getPageSource().contains("Why register"));
 
-        pause(10);
     }
 }
