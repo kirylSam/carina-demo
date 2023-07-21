@@ -18,12 +18,15 @@ package com.zebrunner.carina.demo;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.GSMArenaHomePage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.LoginComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.HeaderComponent;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.ArenaPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.InstaPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.MerchPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.RSSPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.SignupPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.TipusPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.YouTubePage;
 import org.testng.Assert;
-import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
@@ -58,17 +61,21 @@ public class KirylSampleTest implements IAbstractTest {
         gsmArenaHomePage.open();
 
         HeaderComponent headerComponent = gsmArenaHomePage.getHeaderComponent();
+        //Logo
         headerComponent.clickGSMArenaLogo();
-        Assert.assertTrue(getDriver().getTitle().equals("GSMArena.com - mobile phone reviews, news, " +
-                "specifications and more..."), "`Home page is not opened");
+        Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened(), "Home page is not opened");
 
+        //Search
         headerComponent.clickSearchField();
         Assert.assertTrue(headerComponent.isAdvancedSearchIconDisplayed(), "Advanced search icon is not displayed!");
-
         headerComponent.clickGSMArenaLogo();
 
+        //Tip us
         headerComponent.clickTipUsIcon();
-        Assert.assertTrue(getDriver().getTitle().equals("Tip us - GSMArena.com"), "Tip us page is not opened!");
+        TipusPage tipus = headerComponent.clickTipUsIcon();
+        Assert.assertTrue(tipus.isTipusPageOpened());
+        getDriver().navigate().back();
+        Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
 
         //Youtube
         Assert.assertTrue(isOnlyOneTabOpened(getDriver()), "Another tab is opened!");
@@ -81,7 +88,7 @@ public class KirylSampleTest implements IAbstractTest {
         returnToTab(getDriver(), originalWindow);
         Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened(), "GSMHomePage is not opened!");
 
-       //Insta
+        //Insta
         Assert.assertTrue(isOnlyOneTabOpened(getDriver()), "Another tab is opened!");
         originalWindow = returnCurrentWindowHandle(getDriver());
         InstaPage instaPage = headerComponent.clickInstaIcon();
@@ -92,39 +99,39 @@ public class KirylSampleTest implements IAbstractTest {
         returnToTab(getDriver(), originalWindow);
         Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
 
+        //RSS
+        RSSPage rssPage = headerComponent.clickRSSIcon();
+        Assert.assertTrue(rssPage.isRSSPageOpened());
+        getDriver().navigate().back();
+        Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
 
+        //Car
+        Assert.assertTrue(isOnlyOneTabOpened(getDriver()), "Another tab is opened!");
+        originalWindow = returnCurrentWindowHandle(getDriver());
+        ArenaPage arenaPage = headerComponent.clickCarIcon();
+        waitForNewTabToOpen(getDriver());
+        switchToNewOpenedTab(getDriver(), originalWindow);
+        Assert.assertTrue(arenaPage.isArenaPageOpened());
+        closeCurrentlyOpenedTab(getDriver());
+        returnToTab(getDriver(), originalWindow);
+        Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
 
-/*
-        headerComponent.clickCarIcon();
-        wait.until(numberOfWindowsToBe(2));
-        for (String windowHandle : getDriver().getWindowHandles()) {
-            if(!originalWindow.contentEquals(windowHandle)) {
-                getDriver().switchTo().window(windowHandle);
-                break;
-            }
-        }
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("arenaev.com"));
-        getDriver().close();
-        getDriver().switchTo().window(originalWindow);
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("gsmarena.com"));
+        //Merch
+        Assert.assertTrue(isOnlyOneTabOpened(getDriver()), "Another tab is opened!");
+        originalWindow = returnCurrentWindowHandle(getDriver());
+        MerchPage merchPage = headerComponent.clickMerchIcon();
+        waitForNewTabToOpen(getDriver());
+        switchToNewOpenedTab(getDriver(), originalWindow);
+        Assert.assertTrue(merchPage.isMerchPageOpened());
+        closeCurrentlyOpenedTab(getDriver());
+        returnToTab(getDriver(), originalWindow);
+        Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
 
-
-        headerComponent.clickCartIcon();
-        wait.until(numberOfWindowsToBe(2));
-        for (String windowHandle : getDriver().getWindowHandles()) {
-            if(!originalWindow.contentEquals(windowHandle)) {
-                getDriver().switchTo().window(windowHandle);
-                break;
-            }
-        }
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("merch"));
-        getDriver().close();
-        getDriver().switchTo().window(originalWindow);
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("gsmarena.com"));
-
-        wait.until(numberOfWindowsToBe(1));
+        //Sign up
         headerComponent.clickSignUpIcon();
-        Assert.assertTrue(getDriver().getPageSource().contains("Why register"));*/
-
+        SignupPage signupPage = headerComponent.clickSignUpIcon();
+        Assert.assertTrue(signupPage.isSignupPageOpened());
+        getDriver().navigate().back();
+        Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
     }
 }

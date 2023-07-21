@@ -1,6 +1,11 @@
 package com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header;
 
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.ArenaPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.InstaPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.MerchPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.RSSPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.SignupPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.TipusPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.YouTubePage;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -64,9 +69,9 @@ public class HeaderComponent extends AbstractUIObject implements ICustomTypePage
         return this;
     }
 
-    public HeaderComponent clickTipUsIcon() {
+    public TipusPage clickTipUsIcon() {
         tipUsIcon.click();
-        return this;
+        return new TipusPage(getDriver());
     }
 
     public YouTubePage clickYoutubeIcon() {
@@ -79,24 +84,24 @@ public class HeaderComponent extends AbstractUIObject implements ICustomTypePage
         return new InstaPage(getDriver());
     }
 
-    public HeaderComponent clickRSSIcon() {
+    public RSSPage clickRSSIcon() {
         rssIcon.click();
-        return this;
+        return new RSSPage(getDriver());
     }
 
-    public HeaderComponent clickCarIcon() {
+    public ArenaPage clickCarIcon() {
         carIcon.click();
-        return this;
+        return new ArenaPage(getDriver());
     }
 
-    public HeaderComponent clickCartIcon() {
+    public MerchPage clickMerchIcon() {
         merchIcon.click();
-        return this;
+        return new MerchPage(getDriver());
     }
 
-    public HeaderComponent clickSignUpIcon() {
+    public SignupPage clickSignUpIcon() {
         signUpIcon.click();
-        return this;
+        return new SignupPage(getDriver());
     }
 
     public boolean isAdvancedSearchIconDisplayed() {
