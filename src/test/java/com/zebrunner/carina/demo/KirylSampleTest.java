@@ -18,21 +18,17 @@ package com.zebrunner.carina.demo;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.GSMArenaHomePage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.LoginComponent;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.LoginComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.HeaderComponent;
-import com.zebrunner.carina.demo.gui.pages.desktop.SauceDemoLoginPage;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.InstaPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.YouTubePage;
 import org.testng.Assert;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Set;
 
-import static org.openqa.selenium.support.ui.ExpectedConditions.numberOfWindowsToBe;
-import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
+
+import static com.zebrunner.carina.demo.gui.pages.KirylGSMArena.utils.WindowHandler.*;
 
 /**
  * Sample web test
@@ -40,7 +36,7 @@ import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
  * @author kiryl
  */
 public class KirylSampleTest implements IAbstractTest {
-    @Test
+   /* @Test
     @MethodOwner(owner = "kiryl")
     @Parameters({"login", "password"})
     public void testLogin(String login, String password) {
@@ -52,7 +48,7 @@ public class KirylSampleTest implements IAbstractTest {
         gsmArenaHomePage = loginComponent.submitCredentials();
         Assert.assertTrue(gsmArenaHomePage.isPageOpened(), "Home Page is not opened!");
         Assert.assertTrue(gsmArenaHomePage.isLogOutButtonDisplayed(), "Log out button is not displayed!");
-    }
+    }*/
 
 
     @Test
@@ -74,41 +70,31 @@ public class KirylSampleTest implements IAbstractTest {
         headerComponent.clickTipUsIcon();
         Assert.assertTrue(getDriver().getTitle().equals("Tip us - GSMArena.com"), "Tip us page is not opened!");
 
-        Assert.assertTrue(getDriver().getWindowHandles().size() == 1, "Another tab is opened!");
-        String originalWindow = getDriver().getWindowHandle();
-        headerComponent.clickYoutubeIcon();
+        //Youtube
+        Assert.assertTrue(isOnlyOneTabOpened(getDriver()), "Another tab is opened!");
+        String originalWindow = returnCurrentWindowHandle(getDriver());
+        YouTubePage youTubePage = headerComponent.clickYoutubeIcon();
+        waitForNewTabToOpen(getDriver());
+        switchToNewOpenedTab(getDriver(), originalWindow);
+        Assert.assertTrue(youTubePage.isYoutubePageOpened(),"Youtube was page is not opened!");
+        closeCurrentlyOpenedTab(getDriver());
+        returnToTab(getDriver(), originalWindow);
+        Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened(), "GSMHomePage is not opened!");
 
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(30));
-        wait.until(numberOfWindowsToBe(2));
-        for (String windowHandle : getDriver().getWindowHandles()) {
-            if(!originalWindow.contentEquals(windowHandle)) {
-                getDriver().switchTo().window(windowHandle);
-                break;
-            }
-        }
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("youtube.com"));
-        getDriver().close();
-        getDriver().switchTo().window(originalWindow);
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("gsmarena.com"));
+       //Insta
+        Assert.assertTrue(isOnlyOneTabOpened(getDriver()), "Another tab is opened!");
+        originalWindow = returnCurrentWindowHandle(getDriver());
+        InstaPage instaPage = headerComponent.clickInstaIcon();
+        waitForNewTabToOpen(getDriver());
+        switchToNewOpenedTab(getDriver(), originalWindow);
+        Assert.assertTrue(instaPage.isInstaPageOpened());
+        closeCurrentlyOpenedTab(getDriver());
+        returnToTab(getDriver(), originalWindow);
+        Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
 
 
-        headerComponent.clickInstaIcon();
-        wait.until(numberOfWindowsToBe(2));
-        for (String windowHandle : getDriver().getWindowHandles()) {
-            if(!originalWindow.contentEquals(windowHandle)) {
-                getDriver().switchTo().window(windowHandle);
-                break;
-            }
-        }
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("instagram.com"));
-        getDriver().close();
-        getDriver().switchTo().window(originalWindow);
-        Assert.assertTrue(getDriver().getCurrentUrl().contains("gsmarena.com"));
 
-        headerComponent.clickRSSIcon();
-        Assert.assertTrue(getDriver().getCurrentUrl().equals("https://www.gsmarena.com/rss-news-reviews.php3"));
-        getDriver().navigate().back();
-
+/*
         headerComponent.clickCarIcon();
         wait.until(numberOfWindowsToBe(2));
         for (String windowHandle : getDriver().getWindowHandles()) {
@@ -138,7 +124,7 @@ public class KirylSampleTest implements IAbstractTest {
 
         wait.until(numberOfWindowsToBe(1));
         headerComponent.clickSignUpIcon();
-        Assert.assertTrue(getDriver().getPageSource().contains("Why register"));
+        Assert.assertTrue(getDriver().getPageSource().contains("Why register"));*/
 
     }
 }

@@ -1,15 +1,12 @@
 package com.zebrunner.carina.demo.gui.pages.KirylGSMArena;
 
-import com.zebrunner.carina.demo.gui.components.ModelItem;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.HeaderComponent;
-import com.zebrunner.carina.demo.gui.pages.common.BrandModelsPageBase;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.LoginComponent;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
-
-import java.util.List;
 
 public class GSMArenaHomePage extends AbstractPage {
 
@@ -24,9 +21,6 @@ public class GSMArenaHomePage extends AbstractPage {
 
     @FindBy(css =".icon-login")
     private ExtendedWebElement loginButton;
-
-    @FindBy(css =".icon-signout")
-    private ExtendedWebElement logOutButton;
 
     @FindBy(css ="#login-popup2")
     private LoginComponent loginComponent;
@@ -56,9 +50,7 @@ public class GSMArenaHomePage extends AbstractPage {
         return headerComponent;
     }
 
-
-    public boolean isLogOutButtonDisplayed() {
-        return logOutButton.isPresent();
+    public boolean isGSMArenaHomePageOpened() {
+        return this.isPageOpened();
     }
-
 }

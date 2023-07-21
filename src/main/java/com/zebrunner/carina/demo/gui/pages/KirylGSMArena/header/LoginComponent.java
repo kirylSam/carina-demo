@@ -1,8 +1,8 @@
-package com.zebrunner.carina.demo.gui.pages.KirylGSMArena;
+package com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header;
 
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.GSMArenaHomePage;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
-import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;

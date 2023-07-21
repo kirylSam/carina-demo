@@ -1,7 +1,7 @@
 package com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header;
 
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.GSMArenaHomePage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.LoginComponent;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.InstaPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.YouTubePage;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;
@@ -43,6 +43,9 @@ public class HeaderComponent extends AbstractUIObject implements ICustomTypePage
     @FindBy(css =".advanced")
     private ExtendedWebElement advancedSearchIcon;
 
+    @FindBy(css =".icon-signout")
+    private ExtendedWebElement logOutButton;
+
     public HeaderComponent(WebDriver driver, SearchContext sc) {
         super(driver, sc);
     }
@@ -66,14 +69,14 @@ public class HeaderComponent extends AbstractUIObject implements ICustomTypePage
         return this;
     }
 
-    public HeaderComponent clickYoutubeIcon() {
+    public YouTubePage clickYoutubeIcon() {
         youtubeIcon.click();
-        return this;
+        return new YouTubePage(getDriver());
     }
 
-    public HeaderComponent clickInstaIcon() {
+    public InstaPage clickInstaIcon() {
         instaIcon.click();
-        return this;
+        return new InstaPage(getDriver());
     }
 
     public HeaderComponent clickRSSIcon() {
