@@ -1,12 +1,12 @@
 package com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header;
 
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.ArenaPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.InstaPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.MerchPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.ArenaPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.InstaPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.MerchPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.RSSPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.SignupPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.TipusPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.YouTubePage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.YouTubePage;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractUIObject;

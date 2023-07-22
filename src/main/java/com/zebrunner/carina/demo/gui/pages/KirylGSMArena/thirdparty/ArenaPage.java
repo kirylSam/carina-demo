@@ -1,4 +1,4 @@
-package com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other;
+package com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty;
 
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.decorator.PageOpeningStrategy;

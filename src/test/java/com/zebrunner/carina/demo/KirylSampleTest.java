@@ -18,14 +18,16 @@ package com.zebrunner.carina.demo;
 import com.zebrunner.carina.core.IAbstractTest;
 import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.GSMArenaHomePage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.footer.FooterComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.HeaderComponent;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.ArenaPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.InstaPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.MerchPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaNewsPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.ArenaPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.InstaPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.MerchPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.RSSPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.SignupPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.TipusPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.YouTubePage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.YouTubePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -54,7 +56,7 @@ public class KirylSampleTest implements IAbstractTest {
     }*/
 
 
-    @Test
+   /* @Test
     @MethodOwner(owner = "kiryl")
     public void testHeader() {
         GSMArenaHomePage gsmArenaHomePage = new GSMArenaHomePage(getDriver());
@@ -133,5 +135,19 @@ public class KirylSampleTest implements IAbstractTest {
         Assert.assertTrue(signupPage.isSignupPageOpened());
         getDriver().navigate().back();
         Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
+    }*/
+
+
+    @Test
+    @MethodOwner(owner = "kiryl")
+    public void testFooter() {
+        GSMArenaHomePage gsmArenaHomePage = new GSMArenaHomePage(getDriver());
+        gsmArenaHomePage.open();
+
+        FooterComponent footerComponent = gsmArenaHomePage.getFooterComponent();
+
+        //News link
+        GSMArenaNewsPage gsmArenaNewsPage = footerComponent.openNewsPage();
+        Assert.assertTrue(gsmArenaNewsPage.isGSMArenaNewsPageOpened(), "GSMArena News Page is not opened!");
     }
 }

@@ -1,5 +1,6 @@
 package com.zebrunner.carina.demo.gui.pages.KirylGSMArena;
 
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.footer.FooterComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.HeaderComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.LoginComponent;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -28,6 +29,9 @@ public class GSMArenaHomePage extends AbstractPage {
     @FindBy(css =".top-bar")
     private HeaderComponent headerComponent;
 
+    @FindBy(css =".footer-inner")
+    private FooterComponent footerComponent;
+
     public GSMArenaHomePage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
@@ -48,6 +52,10 @@ public class GSMArenaHomePage extends AbstractPage {
 
     public HeaderComponent getHeaderComponent() {
         return headerComponent;
+    }
+
+    public FooterComponent getFooterComponent() {
+        return footerComponent;
     }
 
     public boolean isGSMArenaHomePageOpened() {
