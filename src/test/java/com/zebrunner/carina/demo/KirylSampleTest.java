@@ -21,6 +21,7 @@ import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.GSMArenaHomePage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.footer.FooterComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.HeaderComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaNewsPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaReviewsPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.ArenaPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.InstaPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.MerchPage;
@@ -149,5 +150,9 @@ public class KirylSampleTest implements IAbstractTest {
         //News link
         GSMArenaNewsPage gsmArenaNewsPage = footerComponent.openNewsPage();
         Assert.assertTrue(gsmArenaNewsPage.isGSMArenaNewsPageOpened(), "GSMArena News Page is not opened!");
+
+        //Reviews Link
+        GSMArenaReviewsPage gsmArenaReviewsPage = footerComponent.openReviewsPage();
+        Assert.assertTrue(gsmArenaReviewsPage.isGSMArenaReviewsPageOpened(), "GSMArena Reviews Page is not opened!");
     }
 }

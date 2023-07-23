@@ -1,38 +1,32 @@
 
 package com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other;
 
-import com.zebrunner.carina.demo.gui.components.NewsItem;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
 import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import com.zebrunner.carina.webdriver.locator.Context;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-import java.util.List;
+public class GSMArenaReviewsPage extends AbstractPage {
 
-public class GSMArenaNewsPage extends AbstractPage {
-
-    @FindBy(xpath = "//div[@class='search-band']")
+    @FindBy(xpath = "/html//div[@id='body']/div/div[1]//form")
     private ExtendedWebElement searchDiv;
 
     @Context(dependsOn = "searchDiv")
-    @FindBy(xpath = ".//input[@type='text']")
+    @FindBy(xpath = ".//input[@name='sSearch']")
     private ExtendedWebElement searchTextField;
 
     @Context(dependsOn = "searchDiv")
-    @FindBy(xpath = ".//input[@type='submit']")
+    @FindBy(xpath = ".//input[@value='Search']")
     private ExtendedWebElement searchButton;
 
-    @FindBy(xpath = "//div[@class='news-item']")
-    private List<NewsItem> news;
-    
-    public GSMArenaNewsPage(WebDriver driver) {
+    public GSMArenaReviewsPage(WebDriver driver) {
         super(driver);
-        setPageURL("/news.php3");
+        setPageURL("/reviews.php3");
         setUiLoadedMarker(searchTextField);
     }
 
-    public boolean isGSMArenaNewsPageOpened() {
+    public boolean isGSMArenaReviewsPageOpened() {
         return searchTextField.isPresent();
     }
 }

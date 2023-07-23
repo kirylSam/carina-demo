@@ -29,8 +29,9 @@ public class GSMArenaHomePage extends AbstractPage {
     @FindBy(css =".top-bar")
     private HeaderComponent headerComponent;
 
-    @FindBy(css =".footer-inner")
+    @FindBy(css ="#footmenu")
     private FooterComponent footerComponent;
+
 
     public GSMArenaHomePage(WebDriver driver) {
         super(driver);
