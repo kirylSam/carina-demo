@@ -20,7 +20,9 @@ import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.GSMArenaHomePage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.footer.FooterComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.HeaderComponent;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaBlogPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaNewsPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaPhonePage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaReviewsPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.ArenaPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.InstaPage;
@@ -154,5 +156,16 @@ public class KirylSampleTest implements IAbstractTest {
         //Reviews Link
         GSMArenaReviewsPage gsmArenaReviewsPage = footerComponent.openReviewsPage();
         Assert.assertTrue(gsmArenaReviewsPage.isGSMArenaReviewsPageOpened(), "GSMArena Reviews Page is not opened!");
+        gsmArenaHomePage.getHeaderComponent().clickGSMArenaLogo();
+
+        //Blog Link
+        GSMArenaBlogPage gsmArenaBlogPage = footerComponent.openBlogPage();
+        Assert.assertTrue(gsmArenaBlogPage.isGSMArenaBlogPageOpened(), "GSMArena Blog Page is not opened!");
+        gsmArenaHomePage.getHeaderComponent().clickGSMArenaLogo();
+
+        //PhoneFinder Link
+        GSMArenaPhonePage gsmArenaPhonePage = footerComponent.openPhonePage();
+        Assert.assertTrue(gsmArenaPhonePage.isGSMArenaPhonePageOpened(), "GSMArena Phone Page is not opened!");
+        gsmArenaHomePage.getHeaderComponent().clickGSMArenaLogo();
     }
 }

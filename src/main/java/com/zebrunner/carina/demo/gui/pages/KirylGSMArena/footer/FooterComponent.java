@@ -1,6 +1,8 @@
 package com.zebrunner.carina.demo.gui.pages.KirylGSMArena.footer;
 
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaBlogPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaNewsPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaPhonePage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaReviewsPage;
 import com.zebrunner.carina.demo.gui.pages.desktop.CompareModelsPage;
 import com.zebrunner.carina.demo.gui.pages.desktop.HomePage;
@@ -84,5 +86,19 @@ public class FooterComponent  extends AbstractUIObject implements ICustomTypePag
         reviewsLink.hover();
         reviewsLink.click();
         return new GSMArenaReviewsPage(driver);
+    }
+
+    public GSMArenaBlogPage openBlogPage() {
+        blogLink.scrollTo();
+        blogLink.hover();
+        blogLink.click();
+        return new GSMArenaBlogPage(driver);
+    }
+
+    public GSMArenaPhonePage openPhonePage() {
+        phoneFinderLink.scrollTo();
+        phoneFinderLink.hover();
+        phoneFinderLink.click();
+        return new GSMArenaPhonePage(driver);
     }
 }
