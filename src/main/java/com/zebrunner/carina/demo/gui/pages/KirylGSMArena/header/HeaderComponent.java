@@ -3,9 +3,9 @@ package com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.ArenaPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.InstaPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.MerchPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.RSSPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.SignupPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.TipusPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaRSSPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaSignupPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaTipusPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.YouTubePage;
 import com.zebrunner.carina.utils.factory.ICustomTypePageFactory;
 import com.zebrunner.carina.webdriver.decorator.ExtendedWebElement;
@@ -69,9 +69,9 @@ public class HeaderComponent extends AbstractUIObject implements ICustomTypePage
         return this;
     }
 
-    public TipusPage clickTipUsIcon() {
+    public GSMArenaTipusPage clickTipUsIcon() {
         tipUsIcon.click();
-        return new TipusPage(getDriver());
+        return new GSMArenaTipusPage(getDriver());
     }
 
     public YouTubePage clickYoutubeIcon() {
@@ -84,9 +84,9 @@ public class HeaderComponent extends AbstractUIObject implements ICustomTypePage
         return new InstaPage(getDriver());
     }
 
-    public RSSPage clickRSSIcon() {
+    public GSMArenaRSSPage clickRSSIcon() {
         rssIcon.click();
-        return new RSSPage(getDriver());
+        return new GSMArenaRSSPage(getDriver());
     }
 
     public ArenaPage clickCarIcon() {
@@ -99,9 +99,9 @@ public class HeaderComponent extends AbstractUIObject implements ICustomTypePage
         return new MerchPage(getDriver());
     }
 
-    public SignupPage clickSignUpIcon() {
+    public GSMArenaSignupPage clickSignUpIcon() {
         signUpIcon.click();
-        return new SignupPage(getDriver());
+        return new GSMArenaSignupPage(getDriver());
     }
 
     public boolean isAdvancedSearchIconDisplayed() {

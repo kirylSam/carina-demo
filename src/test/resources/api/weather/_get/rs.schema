@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "type": "object",
+  "properties": {
+    "latitude": {
+      "type": "number"
+    },
+    "longitude": {
+      "type": "number"
+    },
+    "generationtime_ms": {
+      "type": "number"
+    },
+    "utc_offset_seconds": {
+      "type": "integer"
+    },
+    "timezone": {
+      "type": "string"
+    },
+    "timezone_abbreviation": {
+      "type": "string"
+    },
+    "elevation": {
+      "type": "number"
+    },
+    "current_weather": {
+      "type": "object",
+      "properties": {
+        "temperature": {
+          "type": "number"
+        },
+        "windspeed": {
+          "type": "number"
+        },
+        "winddirection": {
+          "type": "number"
+        },
+        "weathercode": {
+          "type": "integer"
+        },
+        "is_day": {
+          "type": "integer"
+        },
+        "time": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "temperature",
+        "windspeed",
+        "winddirection",
+        "weathercode",
+        "is_day",
+        "time"
+      ]
+    }
+  },
+  "required": [
+    "latitude",
+    "longitude",
+    "generationtime_ms",
+    "utc_offset_seconds",
+    "timezone",
+    "timezone_abbreviation",
+    "elevation",
+    "current_weather"
+  ]
+}

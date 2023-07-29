@@ -6,12 +6,12 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class TipusPage extends AbstractPage {
+public class GSMArenaTipusPage extends AbstractPage {
 
     @FindBy(css = "input#usubject")
     private ExtendedWebElement subjectInput;
 
-    public TipusPage(WebDriver driver) {
+    public GSMArenaTipusPage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(subjectInput);

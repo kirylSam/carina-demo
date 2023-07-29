@@ -20,6 +20,7 @@ import com.zebrunner.carina.core.registrar.ownership.MethodOwner;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.GSMArenaHomePage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.footer.FooterComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.HeaderComponent;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.header.LoginComponent;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaBlogPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaNewsPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaPhonePage;
@@ -27,11 +28,12 @@ import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaReviewsPa
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.ArenaPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.InstaPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.MerchPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.RSSPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.SignupPage;
-import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.TipusPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaRSSPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaSignupPage;
+import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.other.GSMArenaTipusPage;
 import com.zebrunner.carina.demo.gui.pages.KirylGSMArena.thirdparty.YouTubePage;
 import org.testng.Assert;
+import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
 
 
@@ -44,7 +46,7 @@ import static com.zebrunner.carina.demo.gui.pages.KirylGSMArena.utils.WindowHand
  * @author kiryl
  */
 public class KirylSampleTest implements IAbstractTest {
-   /* @Test
+    @Test
     @MethodOwner(owner = "kiryl")
     @Parameters({"login", "password"})
     public void testLogin(String login, String password) {
@@ -55,11 +57,10 @@ public class KirylSampleTest implements IAbstractTest {
                 .enterPassword(password);
         gsmArenaHomePage = loginComponent.submitCredentials();
         Assert.assertTrue(gsmArenaHomePage.isPageOpened(), "Home Page is not opened!");
-        Assert.assertTrue(gsmArenaHomePage.isLogOutButtonDisplayed(), "Log out button is not displayed!");
-    }*/
+    }
 
 
-   /* @Test
+    @Test
     @MethodOwner(owner = "kiryl")
     public void testHeader() {
         GSMArenaHomePage gsmArenaHomePage = new GSMArenaHomePage(getDriver());
@@ -77,7 +78,7 @@ public class KirylSampleTest implements IAbstractTest {
 
         //Tip us
         headerComponent.clickTipUsIcon();
-        TipusPage tipus = headerComponent.clickTipUsIcon();
+        GSMArenaTipusPage tipus = headerComponent.clickTipUsIcon();
         Assert.assertTrue(tipus.isTipusPageOpened());
         getDriver().navigate().back();
         Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
@@ -105,7 +106,7 @@ public class KirylSampleTest implements IAbstractTest {
         Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
 
         //RSS
-        RSSPage rssPage = headerComponent.clickRSSIcon();
+        GSMArenaRSSPage rssPage = headerComponent.clickRSSIcon();
         Assert.assertTrue(rssPage.isRSSPageOpened());
         getDriver().navigate().back();
         Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
@@ -134,11 +135,11 @@ public class KirylSampleTest implements IAbstractTest {
 
         //Sign up
         headerComponent.clickSignUpIcon();
-        SignupPage signupPage = headerComponent.clickSignUpIcon();
+        GSMArenaSignupPage signupPage = headerComponent.clickSignUpIcon();
         Assert.assertTrue(signupPage.isSignupPageOpened());
         getDriver().navigate().back();
         Assert.assertTrue(gsmArenaHomePage.isGSMArenaHomePageOpened());
-    }*/
+    }
 
 
     @Test

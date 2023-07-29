@@ -1,0 +1,17 @@
+ {
+    "latitude": 52.25,
+    "longitude": 21.0,
+    "generationtime_ms": "regex:^[0-9]*\\.[0-9]+$",
+    "utc_offset_seconds": 0,
+    "timezone": "GMT",
+    "timezone_abbreviation": "GMT",
+    "elevation": "regex:^([+-]?(?=\\.\\d|\\d)(?:\\d+)?(?:\\.?\\d*))(?:[Ee]([+-]?\\d+))?$",
+    "current_weather": {
+      "temperature": "regex:^[0-9]*\\.[0-9]+$",
+      "windspeed": "regex:^[0-9]*\\.[0-9]+$",
+      "winddirection": "regex:^[0-9]*\\.[0-9]+$",
+      "weathercode": "regex:^[A-Za-z0-9]+$",
+      "is_day": "regex:^[A-Za-z0-9]+$",
+      "time": "regex:^([A-Za-z0-9]+(-[A-Za-z0-9]+)+).*$"
+    }
+ }

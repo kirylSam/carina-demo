@@ -55,25 +55,6 @@ public class FooterComponent  extends AbstractUIObject implements ICustomTypePag
         super(driver);
     }
 
-  /*  public HomePage openHomePage() {
-        homeLink.click();
-        return new HomePage(driver);
-    }
-
-    public CompareModelsPage openComparePage() {
-        compareLink.scrollTo();
-        compareLink.hover();
-        compareLink.click();
-        return new CompareModelsPage(driver);
-    }
-
-    public NewsPage openNewsPage() {
-        newsLink.scrollTo();
-        newsLink.hover();
-        newsLink.click();
-        return new NewsPage(driver);
-    }*/
-
     public GSMArenaNewsPage openNewsPage() {
         newsLink.scrollTo();
         newsLink.hover();

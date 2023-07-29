@@ -6,12 +6,12 @@ import com.zebrunner.carina.webdriver.gui.AbstractPage;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.FindBy;
 
-public class SignupPage extends AbstractPage {
+public class GSMArenaSignupPage extends AbstractPage {
 
     @FindBy(css = "input#uname")
     private ExtendedWebElement usernameInput;
 
-    public SignupPage(WebDriver driver) {
+    public GSMArenaSignupPage(WebDriver driver) {
         super(driver);
         setPageOpeningStrategy(PageOpeningStrategy.BY_ELEMENT);
         setUiLoadedMarker(usernameInput);
