@@ -48,20 +48,6 @@ import static com.zebrunner.carina.demo.gui.pages.KirylGSMArena.utils.WindowHand
 public class KirylSampleTest implements IAbstractTest {
     @Test
     @MethodOwner(owner = "kiryl")
-    @Parameters({"login", "password"})
-    public void testLogin(String login, String password) {
-        GSMArenaHomePage gsmArenaHomePage = new GSMArenaHomePage(getDriver());
-        gsmArenaHomePage.open();
-        LoginComponent loginComponent = gsmArenaHomePage.getLoginComponent();
-        loginComponent.enterLogin(login)
-                .enterPassword(password);
-        gsmArenaHomePage = loginComponent.submitCredentials();
-        Assert.assertTrue(gsmArenaHomePage.isPageOpened(), "Home Page is not opened!");
-    }
-
-
-    @Test
-    @MethodOwner(owner = "kiryl")
     public void testHeader() {
         GSMArenaHomePage gsmArenaHomePage = new GSMArenaHomePage(getDriver());
         gsmArenaHomePage.open();

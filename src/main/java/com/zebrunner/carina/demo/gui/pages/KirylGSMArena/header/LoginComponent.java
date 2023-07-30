@@ -41,4 +41,12 @@ public class LoginComponent extends AbstractUIObject implements ICustomTypePageF
         logInButton.click();
         return new GSMArenaHomePage(driver);
     }
+
+    public String getEmailFieldValidationMessage() {
+        return emailInputField.getAttribute("validationMessage");
+    }
+
+    public String getPasswordFieldValidationMessage() {
+        return passwordInputField.getAttribute("validationMessage");
+    }
 }

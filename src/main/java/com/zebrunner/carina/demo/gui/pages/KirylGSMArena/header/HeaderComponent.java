@@ -107,4 +107,9 @@ public class HeaderComponent extends AbstractUIObject implements ICustomTypePage
     public boolean isAdvancedSearchIconDisplayed() {
         return advancedSearchIcon.isElementPresent();
     }
+
+    public HeaderComponent clickLogOutButton() {
+        logOutButton.click();
+        return this;
+    }
 }
