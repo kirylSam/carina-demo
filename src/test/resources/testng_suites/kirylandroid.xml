@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Kiryl - android" verbose="1" parallel="methods">
+
+	<parameter name="suiteOwner" value="kiryl" />
+<!--	<parameter name="provider" value="mcloud"/>-->
+<!--	<parameter name="jenkinsJobName" value="Mobile-Android-Demo-Test" />-->
+	<parameter name="jenkinsJobType" value="android"/>
+
+	<parameter name="jenkinsJobExecutionMode" value="continue" />
+
+
+	<test name="Mobile test">
+		<classes>
+			<class name="com.zebrunner.carina.demo.KirylMobileSampleTest" />
+		</classes>
+	</test>
+
+</suite>
